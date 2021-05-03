@@ -9,6 +9,7 @@ TagManager:
   - PlayerBullet
   - OB
   - SilkScreen
+  - Spawn
   layers:
   - Default
   - TransparentFX

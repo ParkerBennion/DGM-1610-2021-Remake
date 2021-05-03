@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
 {
     public Sound[] sounds;
+    public static int gameMode;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Play("GoMusic");
+        gameMode = 1;
     }
     // this simply plays the the soundtrac with the assigned string in the inspector with "gomusic"
 

@@ -35,4 +35,5 @@ public class CursorController : MonoBehaviour
      Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
      transform.position = cursorPos;
  }*/
+//this is a modified brackies tutorial combined with several other youtube tutorials to change a cursor.
 }

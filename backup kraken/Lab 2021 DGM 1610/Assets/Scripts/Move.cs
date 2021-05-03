@@ -22,15 +22,6 @@ public class Move : MonoBehaviour
     void Update()
     {
         playerPositoin = transform.position;
-        //forwardButton = Input.GetAxis("Vertical");
-        //sideButton = Input.GetAxis("Horizontal");
-        
-        //transform.Rotate(Vector3.up,Time.deltaTime * sideButton * turnSpeed);
-       // transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardButton);
-        /*if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(Vector3.forward * Time.deltaTime* speed);
-        }*/
         if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(Vector3.left * Time.deltaTime* speed);
@@ -39,7 +30,7 @@ public class Move : MonoBehaviour
         {
             transform.Translate(Vector3.right * Time.deltaTime* speed);
         }
-        
+        //move left and right
         
         if (transform.position.x < -xBound)
         {
@@ -49,7 +40,7 @@ public class Move : MonoBehaviour
         {
             transform.position = new Vector3(xBound, transform.position.y, transform.position.z);
         }
-        
+        //sets limits
         
         if (Input.GetKeyDown(KeyCode.Space) && jumpAvailable)
         {
@@ -57,7 +48,7 @@ public class Move : MonoBehaviour
             jumpAvailable = false;
             doubleJump = true;
         }
-
+        // sets jung acording to bool
         if (Input.GetKeyDown(KeyCode.W) && !jumpAvailable && doubleJump)
         {
             playerRB.velocity = transform.up * Time.deltaTime* dJump;
@@ -72,4 +63,5 @@ public class Move : MonoBehaviour
         jumpAvailable = true;
         doubleJump = false;
     }
+    //colliding resets bool;
 }
