@@ -29,6 +29,19 @@ public class GameManager : MonoBehaviour
         Play("GoMusic");
         gameMode = 1;
     }
+
+    private void Update()
+    {
+        if (!StatusManager.gameActive)
+        {
+            playGameOverMusic();
+        }
+    }
+
+    void playGameOverMusic()
+    {
+        Play( "GO");
+    }
     // this simply plays the the soundtrac with the assigned string in the inspector with "gomusic"
 
     public void Play (string name)
@@ -36,6 +49,7 @@ public class GameManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
+            Debug.Log("invalid music file name");
             return;
         }
         s.Source.Play();

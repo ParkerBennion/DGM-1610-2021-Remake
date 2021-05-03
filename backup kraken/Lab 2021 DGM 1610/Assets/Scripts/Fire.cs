@@ -22,7 +22,7 @@ public class Fire : MonoBehaviour
     void Update()
     {
         triggerDelay -= Time.deltaTime;
-        if (triggerDelay < 1)
+        if (triggerDelay < 1 && StatusManager.gameActive)
         {
             ShootNow();
         }
@@ -33,7 +33,7 @@ public class Fire : MonoBehaviour
     {
         Instantiate(bullet, gun.transform.position, trajectory); // on left click spawn (insert variable X) at (insert variable Y) with rotation matching "trajectory"
             Instantiate(tracer, gun.transform.position, trajectory);
-            triggerDelay = 2;
+            triggerDelay = 3;
     }
     
 }

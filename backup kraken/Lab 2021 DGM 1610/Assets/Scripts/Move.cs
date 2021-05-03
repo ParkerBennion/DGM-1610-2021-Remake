@@ -21,40 +21,44 @@ public class Move : MonoBehaviour
     
     void Update()
     {
-        playerPositoin = transform.position;
-        if (Input.GetKey(KeyCode.A))
+        if (StatusManager.gameActive)
         {
-            transform.Translate(Vector3.left * Time.deltaTime* speed);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(Vector3.right * Time.deltaTime* speed);
-        }
-        //move left and right
+            playerPositoin = transform.position;
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.Translate(Vector3.left * Time.deltaTime* speed);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(Vector3.right * Time.deltaTime* speed);
+            }
+            //move left and right
         
-        if (transform.position.x < -xBound)
-        {
-            transform.position = new Vector3(-xBound, transform.position.y, transform.position.z);
-        }
-        if (transform.position.x > xBound)
-        {
-            transform.position = new Vector3(xBound, transform.position.y, transform.position.z);
-        }
-        //sets limits
+            if (transform.position.x < -xBound)
+            {
+                transform.position = new Vector3(-xBound, transform.position.y, transform.position.z);
+            }
+            if (transform.position.x > xBound)
+            {
+                transform.position = new Vector3(xBound, transform.position.y, transform.position.z);
+            }
+            //sets limits
         
-        if (Input.GetKeyDown(KeyCode.Space) && jumpAvailable)
-        {
-            playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            jumpAvailable = false;
-            doubleJump = true;
+            if (Input.GetKeyDown(KeyCode.Space) && jumpAvailable)
+            {
+                playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                jumpAvailable = false;
+                doubleJump = true;
+            }
+            // sets jung acording to bool
+            if (Input.GetKeyDown(KeyCode.W) && !jumpAvailable && doubleJump)
+            {
+                playerRB.velocity = transform.up * Time.deltaTime* dJump;
+                doubleJump = false;
+            }
+            //double jump that detects collision and variables then lets you jump 2 times. you do have to use different buttons however.
         }
-        // sets jung acording to bool
-        if (Input.GetKeyDown(KeyCode.W) && !jumpAvailable && doubleJump)
-        {
-            playerRB.velocity = transform.up * Time.deltaTime* dJump;
-            doubleJump = false;
-        }
-        //double jump that detects collision and variables then lets you jump 2 times. you do have to use different buttons however.
+        
         
 
     }

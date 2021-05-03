@@ -10,6 +10,7 @@ TagManager:
   - OB
   - SilkScreen
   - Spawn
+  - BOSS
   layers:
   - Default
   - TransparentFX

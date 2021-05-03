@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StatusManager : MonoBehaviour
 {
     public int maxHealth = 5;
     public int currentHealth;
+    public static bool gameActive;
+
+    public GameObject retryButton;
     //private Vector3 playerLocation;
 
     public Health healthBar;
@@ -15,6 +19,7 @@ public class StatusManager : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.MaxHealth(maxHealth);
+        gameActive = true;
     }
 
     private void Update()
@@ -22,7 +27,8 @@ public class StatusManager : MonoBehaviour
         Vector3 here = transform.position;
         if (currentHealth < 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            retryButton.SetActive(true);
+            gameActive = false;
         }
     }
     //resets the scene to menu scene on death

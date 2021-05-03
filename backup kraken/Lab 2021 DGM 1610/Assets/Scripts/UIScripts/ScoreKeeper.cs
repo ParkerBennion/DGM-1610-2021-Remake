@@ -17,6 +17,10 @@ public class ScoreKeeper : MonoBehaviour
     private void Update()
     {
         ScoreText.text = Score.ToString();
+        if (Score > 20 )
+        {
+            BackupSpawn.bossT = true;
+        }
     }
     //makes a score text box sets it to 0 on awake and then make it a string so it can be displayed.
     //see kill script for how points are added
