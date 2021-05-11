@@ -13,7 +13,7 @@ public class BackupSpawn : MonoBehaviour
     private void Start()
     {
         InvokeRepeating(nameof(SpawnRate), spawnTime,spawnInterval);
-        bossT = false;
+        bossT = true;
     }
 
     private void Update()
@@ -23,6 +23,7 @@ public class BackupSpawn : MonoBehaviour
             Bosstime();
         }
     }
+    //summons boss when score hits 20
 
     void SpawnRate()
     {
@@ -30,6 +31,11 @@ public class BackupSpawn : MonoBehaviour
         Vector3 spawnPos = new Vector3(Random.Range(-spawnX, spawnX),Random.Range(1f,8f), spawnZ);
             
         Instantiate(objPrefabs[animalIndex], spawnPos, objPrefabs[animalIndex].transform.rotation);
+        if (!StatusManager.gameActive)
+        {
+            CancelInvoke();
+        }
+        //stops this from repeating
     }
 
     void Bosstime()
@@ -37,4 +43,6 @@ public class BackupSpawn : MonoBehaviour
         Vector3 spawnPos = new Vector3(.36f, 5f, 9.76f);
         Instantiate(boss, spawnPos, transform.rotation);
     }
+    
+    //sets up a spawnrate and posistion for enemies.
 }

@@ -38,4 +38,6 @@ public class Tracer : MonoBehaviour
             
         }
     }
+    
+    // this is the script that allows us to see where the bullets land on the screen.
 }
